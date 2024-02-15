@@ -5,30 +5,28 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: #191718;
-  --background-end-rgb: #1D3B4F;
+  --background-end-rgb: #1d3b4f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: #191718;
-    --background-end-rgb: #1D3B4F;
+    --background-end-rgb: #1d3b4f;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      45deg,
-      transparent,
-      var(--background-end-rgb)
-    )
-   var(--background-start-rgb);
+    45deg,
+    var(--background-start-rgb),
+    var(--background-end-rgb)
+  );
   min-height: 100vh;
-  background-size: 400% 400%;
+  /* background-size: 400% 400%; */
   /* animation: gradient 10s ease infinite; */
 }
-
 
 /* @keyframes gradient {
   0% {
