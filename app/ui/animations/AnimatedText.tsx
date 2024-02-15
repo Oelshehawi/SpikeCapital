@@ -9,7 +9,7 @@ const AnimatedText = () => {
       },
     },
     exit: {
-      transition: { staggerChildren: 0.05, staggerDirection: -1 },
+      transition: { staggerDirection: -1 },
     },
   };
 
