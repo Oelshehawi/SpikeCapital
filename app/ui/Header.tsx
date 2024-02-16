@@ -9,7 +9,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 50) {
         setIsScrolled(true);
         controls.start({
           y: 0,
