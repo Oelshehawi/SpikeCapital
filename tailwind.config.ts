@@ -11,12 +11,25 @@ const config: Config = {
       blue: "#1d3b4f",
       white: "#FFFFFF",
       black: "#000000",
+      transparent: "rgba(255, 255, 255, 0)"
     },
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      animation: {
+        bloop: 'bloop 3s ease-in-out infinite',
+        swing: 'swing 4s ease-in-out infinite',
+      },
+      keyframes: {
+        bloop: {
+          '0%, 100%': {
+            transform: 'scale(1)',
+          },
+          '50%': {
+            transform: 'scale(1.2)',
+          },
+        },
+      },
+      height: {
+        'screen-150': '250vh', 
       },
     },
   },
