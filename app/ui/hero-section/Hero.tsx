@@ -10,7 +10,7 @@ export default function Hero() {
 
   return (
     <motion.div
-      className="mx-4 my-5 flex flex-col items-center justify-center rounded-lg bg-blue-500 py-10 text-center text-white sm:mx-10 md:mx-0 z-0"
+      className="z-0 mx-4 my-5 flex flex-col items-center justify-center rounded-lg bg-blue-500 py-10 text-center text-white sm:mx-10 md:mx-0"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -32,21 +32,19 @@ export default function Hero() {
 
       {/* Video Container with Gradient Background */}
       <div className="shadow-cool bg-conic-gradient mx-auto mb-8 w-full max-w-4xl rounded-lg p-1">
-        <video
-          src="/leadspike-VSL.mov"
-          width="100%"
-          height="auto"
-          controls
-          className="aspect-video rounded-lg"
-        />
+        <iframe
+          src="https://www.youtube.com/embed/P_mxdU0Hr5o"
+          title="How we Generated $350K+ In Qualified Pipeline using Cold Email"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          className="aspect-video w-full"
+        ></iframe>
       </div>
 
       {/* Call to Action Button */}
-      <Button className="animate-bloop rounded-lg bg-blue-700 px-6 py-3 text-lg font-bold md:mx-5 z-0">
+      <Button className="animate-bloop z-0 rounded-lg bg-blue-700 px-6 py-3 text-lg font-bold md:mx-5">
         Book a Call
       </Button>
-   
     </motion.div>
-    
   );
 }
