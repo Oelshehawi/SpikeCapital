@@ -63,19 +63,19 @@ export default function Trusted() {
       initial="hidden"
       animate={controls}
       variants={containerVariants}
-      className="my-5 flex flex-col items-center justify-center overflow-hidden bg-blue-700 p-10"
+      className="my-5 flex flex-col items-center justify-center overflow-hidden bg-blue-700 p-5"
     >
       <h1 className="mb-10 text-3xl font-bold text-white">Trusted By</h1>
-      <div className="relative h-56 w-full overflow-hidden md:w-3/4">
+      <div className="relative w-full overflow-hidden md:h-56 md:w-3/4">
         <motion.div
-          className="animate flex items-center justify-start gap-x-10 md:gap-x-20"
+          className="flex items-center justify-start gap-x-10 md:gap-x-20"
           animate={{
             x: [0, -(logos.length * 500)],
-            transition: { repeat: Infinity, duration: 50, ease: "linear" },
+            transition: { repeat: Infinity, duration: 25, ease: "linear" },
           }}
         >
           {TripledLogos.map((logo, index) => (
-            <Link key={index} href={logo.href} passHref>
+            <Link key={index} href={logo.href} target="_blank">
               <motion.div
                 className="cursor-pointer"
                 whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
@@ -86,7 +86,7 @@ export default function Trusted() {
                     alt={logo.alt}
                     fill={true}
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 250px"
-                    className="z-20 rounded-full object-contain"
+                    className="rounded object-contain"
                   />
                 </div>
               </motion.div>
