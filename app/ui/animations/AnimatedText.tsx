@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const AnimatedText = () => {
   const containerVariants = {
@@ -19,16 +20,15 @@ const AnimatedText = () => {
     exit: { scale: 0.5, opacity: 0, transition: { duration: 0.4 } },
   };
 
-const underlineVariants = {
-  initial: { width: 0, opacity: 0.5 },
-  animate: {
-    width: "100%",
-    opacity: 1,
-    transition: { duration: 0.8, ease: "easeInOut" },
-  },
-  exit: { scale: 0.5, opacity: 0, transition: { duration: 0.4 } },
-
-};
+  const underlineVariants = {
+    initial: { width: 0, opacity: 0.5 },
+    animate: {
+      width: "100%",
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeInOut" },
+    },
+    exit: { scale: 0.5, opacity: 0, transition: { duration: 0.4 } },
+  };
 
   return (
     <motion.div
@@ -38,7 +38,7 @@ const underlineVariants = {
       animate="animate"
       exit="exit"
     >
-      <motion.span className="block">
+      <motion.span className="flex flex-row">
         {"LeadSpike".split("").map((char, index) => (
           <motion.span
             key={index}
@@ -48,6 +48,16 @@ const underlineVariants = {
             {char}
           </motion.span>
         ))}
+        <motion.span
+         variants={letterVariants}
+        >
+          <Image
+            src="/leadspike-arrow.png"
+            width={50}
+            height={50}
+            alt="Leadspike-Arrow"
+          />{" "}
+        </motion.span>
       </motion.span>
       <motion.div
         className="mt-2 h-1 w-full bg-white"

@@ -33,10 +33,19 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [controls]);
 
+  const logoVariants = {
+    initial: { y: -20, opacity: 0 },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeInOut", delay: 3 },
+    },
+  };
+
   return (
-    <div className="flex justify-center p-5">
+    <div className="flex max-h-10 justify-center p-5">
       <motion.div
-        className={`${isScrolled ? "rounded-full bg-transparent backdrop-blur-md transition-all" : "backdrop-blur-md"} fixed flex w-3/4 items-center justify-between rounded p-4 `}
+        className={`${isScrolled ? "rounded-full bg-transparent backdrop-blur-md transition-all" : "backdrop-blur-md"} w-full fixed flex md:w-3/4 items-center justify-between rounded p-4 `}
         animate={controls}
         initial={{
           y: -20,
@@ -44,14 +53,31 @@ export default function Header() {
             "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
         }}
       >
-        <Image
-          src="/leadspike.png"
-          alt="Logo"
-          width={100}
-          height={100}
-          className="mx-5"
-        />
-        <Button className="animate-bloop font-bold md:mx-5 ">
+        <div className="flex items-center">
+          <motion.span
+            className="md:ml-3 text-md font-bold md:text-2xl"
+            variants={logoVariants}
+            initial="initial"
+            animate="animate"
+          >
+            LeadSpike
+          </motion.span>
+          <motion.div
+            className=""
+            variants={logoVariants}
+            initial="initial"
+            animate="animate"
+          >
+            <Image
+              src="/leadspike-arrow.png"
+              alt="Arrow"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+          </motion.div>
+        </div>
+        <Button className="animate-bloop justify-end font-bold md:mr-3 ">
           Book a Call
         </Button>
       </motion.div>
