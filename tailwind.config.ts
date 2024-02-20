@@ -36,8 +36,8 @@ const config: Config = {
         cool: "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)",
       },
       backgroundImage: {
-        "splatter-gradient":
-          "radial-gradient(circle at 20% 20%, #FF0080, transparent), radial-gradient(circle at 80% 80%, #D9FF00, transparent)",
+        "splatter-gradient": 
+          "radial-gradient(circle at 20% 20%, rgba(143, 45, 86, 0.8), transparent), radial-gradient(circle at 80% 80%, rgba(57, 105, 136, 0.8), transparent)"
       },
       height: {
         "screen-150": "250vh",

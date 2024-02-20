@@ -46,7 +46,7 @@ export default function Hero() {
         {/* Text Content */}
         <h1 className="mb-5 w-full text-3xl font-bold sm:w-3/4 md:text-5xl">
           {
-            "We Install & Operate Outbound Client Acquisition Systems that Guarantee 10-25 Qualified Calls Per Month"
+            "We Install & Operate Outbound Client Acquisition Systems That Guarantee 10-25 Qualified Calls Per Month"
           }
           <span className="mt-3 block text-xl md:text-2xl">
             {" (or you don't pay)"}
