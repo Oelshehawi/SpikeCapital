@@ -75,7 +75,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Call to Action Button */}
-      <Button className="animate-bloop z-0 rounded-lg bg-blue-700 px-6 py-3 text-lg font-bold md:mx-5">
+      <Button className="rounded-lg bg-blue-700 px-6 py-3 text-lg font-bold md:mx-5">
         Book a Call
       </Button>
     </motion.div>

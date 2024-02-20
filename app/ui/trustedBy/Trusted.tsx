@@ -44,6 +44,16 @@ export default function Trusted() {
       alt: "Jump Satori",
       href: "https://jumpsatori.com/",
     },
+    {
+        src: "/black-tie-logo.png",
+        alt: "Black Tie Funding",
+        href: "https://blacktiefunding.com/",
+      },
+      {
+        src: "/optimax-logo.png",
+        alt: "Optimax Talent",
+        href: "https://optimaxtalent.com/",
+      },
   ];
 
   const TripledLogos = [...logos, ...logos, ...logos];
@@ -71,7 +81,7 @@ export default function Trusted() {
           className="flex items-center justify-start gap-x-10 md:gap-x-20"
           animate={{
             x: [0, -(logos.length * 500)],
-            transition: { repeat: Infinity, duration: 25, ease: "linear" },
+            transition: { repeat: Infinity, duration: 55, ease: "linear" },
           }}
         >
           {TripledLogos.map((logo, index) => (
