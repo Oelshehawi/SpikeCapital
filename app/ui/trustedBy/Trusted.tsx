@@ -45,15 +45,15 @@ export default function Trusted() {
       href: "https://jumpsatori.com/",
     },
     {
-        src: "/black-tie-logo.png",
-        alt: "Black Tie Funding",
-        href: "https://blacktiefunding.com/",
-      },
-      {
-        src: "/optimax-logo.png",
-        alt: "Optimax Talent",
-        href: "https://optimaxtalent.com/",
-      },
+      src: "/black-tie-logo.png",
+      alt: "Black Tie Funding",
+      href: "https://blacktiefunding.com/",
+    },
+    {
+      src: "/optimax-logo.png",
+      alt: "Optimax Talent",
+      href: "https://optimaxtalent.com/",
+    },
   ];
 
   const TripledLogos = [...logos, ...logos, ...logos];
@@ -104,7 +104,7 @@ export default function Trusted() {
           ))}
         </motion.div>
         <div className="absolute bottom-0 left-0 top-0 w-12 bg-gradient-to-r from-blue-700 to-transparent md:w-24"></div>
-        <div className="absolute bottom-0 right-0 top-0 w-12 bg-gradient-to-l from-blue-700 to-transparent md:w-24"></div>
+        <div className="absolute bottom-0 right-0 top-0 w-12 bg-gradient-to-l from-blue-700 to-transparent md:w-2"></div>
       </div>
     </motion.div>
   );

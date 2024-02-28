@@ -45,7 +45,7 @@ export default function Header() {
   return (
     <div className="flex max-h-10 justify-center p-5">
       <motion.div
-        className={`${isScrolled ? "rounded-full bg-transparent backdrop-blur-md transition-all" : "backdrop-blur-md"} w-full fixed flex md:w-3/4 items-center justify-between rounded p-4 `}
+        className={`${isScrolled ? "z-20 rounded-full bg-transparent backdrop-blur-md transition-all" : "backdrop-blur-md"} fixed z-20 flex w-full items-center justify-between rounded p-4 md:w-3/4 `}
         animate={controls}
         initial={{
           y: -20,
@@ -55,7 +55,7 @@ export default function Header() {
       >
         <div className="flex items-center">
           <motion.span
-            className="md:ml-3 text-md font-bold md:text-2xl"
+            className="text-md font-bold md:ml-3 md:text-2xl"
             variants={logoVariants}
             initial="initial"
             animate="animate"
@@ -77,7 +77,7 @@ export default function Header() {
             />
           </motion.div>
         </div>
-        <Button className="animate-bloop justify-end font-bold md:mr-3 ">
+        <Button className="animate-bloopMobile md:animate-bloop justify-end font-bold md:mr-3 shadow">
           Book a Call
         </Button>
       </motion.div>

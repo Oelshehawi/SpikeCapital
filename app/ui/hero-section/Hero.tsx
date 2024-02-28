@@ -74,8 +74,7 @@ export default function Hero() {
         ></iframe>
       </motion.div>
 
-      {/* Call to Action Button */}
-      <Button className="rounded-lg bg-blue-700 px-6 py-3 text-lg font-bold md:mx-5">
+      <Button className="px-6 py-3 text-lg font-bold md:mx-5 bg-blue-700 shadow">
         Book a Call
       </Button>
     </motion.div>

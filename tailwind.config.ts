@@ -20,12 +20,17 @@ const config: Config = {
     extend: {
       animation: {
         bloop: "bloop 3s ease-in-out infinite",
+        bloopMobile: "bloopMobile 3s ease-in-out infinite",
         slide: "slide 35s linear infinite",
       },
       keyframes: {
         bloop: {
           "0%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.2)" },
+        },
+        bloopMobile: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
         },
         slide: {
           "0%": { transform: "translateX(0%)" },
@@ -38,9 +43,6 @@ const config: Config = {
       backgroundImage: {
         "splatter-gradient": 
           "radial-gradient(circle at 20% 20%, rgba(143, 45, 86, 0.8), transparent), radial-gradient(circle at 80% 80%, rgba(57, 105, 136, 0.8), transparent)"
-      },
-      height: {
-        "screen-150": "250vh",
       },
     },
   },
