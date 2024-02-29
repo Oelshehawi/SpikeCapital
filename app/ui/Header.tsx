@@ -77,7 +77,7 @@ export default function Header() {
             />
           </motion.div>
         </div>
-        <Button className="animate-bloopMobile md:animate-bloop justify-end font-bold md:mr-3 shadow">
+        <Button className="animate-bloopMobile justify-end font-bold shadow md:mr-3 md:animate-bloop">
           Book a Call
         </Button>
       </motion.div>
