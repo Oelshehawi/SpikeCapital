@@ -73,7 +73,7 @@ export default function Trusted() {
       initial="hidden"
       animate={controls}
       variants={containerVariants}
-      className="my-5 flex flex-col items-center justify-center overflow-hidden bg-blue-700 p-5"
+      className="my-5 flex flex-col items-center justify-center overflow-hidden bg-white p-5"
     >
       <h1 className="mb-10 text-3xl font-bold text-white">Trusted By</h1>
       <div className="relative w-full overflow-hidden md:h-56 md:w-3/4">
@@ -103,8 +103,8 @@ export default function Trusted() {
             </Link>
           ))}
         </motion.div>
-        <div className="absolute bottom-0 left-0 top-0 w-12 bg-gradient-to-r from-blue-700 to-transparent md:w-24"></div>
-        <div className="absolute bottom-0 right-0 top-0 w-12 bg-gradient-to-l from-blue-700 to-transparent md:w-2"></div>
+        <div className="absolute bottom-0 left-0 top-0 w-12 bg-gradient-to-r from-white to-transparent md:w-24"></div>
+        <div className="absolute bottom-0 right-0 top-0 w-12 bg-gradient-to-l from-white to-transparent md:w-2"></div>
       </div>
     </motion.div>
   );

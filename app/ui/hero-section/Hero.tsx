@@ -59,20 +59,6 @@ export default function Hero() {
         </p>
       </motion.div>
 
-      <motion.div
-        className="shadow-cool bg-splatter-gradient mb-8 overflow-hidden rounded-lg p-1"
-        variants={bounceVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Video Container with Gradient Background */}
-        <iframe
-          src="https://play.vidyard.com/UHc59rkrrssowmsfqhF7mz.html"
-          title="LeadSpike Video"
-          allowFullScreen
-          className=" aspect-video w-full md:h-96"
-        ></iframe>
-      </motion.div>
 
       <Button className="px-6 py-3 text-lg font-bold md:mx-5 bg-blue-700 shadow">
         Book a Call

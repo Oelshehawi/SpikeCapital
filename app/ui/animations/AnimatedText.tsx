@@ -38,8 +38,8 @@ const AnimatedText = () => {
       animate="animate"
       exit="exit"
     >
-      <motion.span className="flex flex-row">
-        {"LeadSpike".split("").map((char, index) => (
+      <motion.span className="flex flex-row text-black">
+        {"Spike".split("").map((char, index) => (
           <motion.span
             key={index}
             className="inline-block text-5xl font-bold"
