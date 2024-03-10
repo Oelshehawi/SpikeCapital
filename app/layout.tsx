@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "LeadSpike",
-  description: "Lead Generation App",
+  title: "Spike Capital",
+  description: "Private Equity Funding",
 };
 
 export default function RootLayout({

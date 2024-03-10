@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import AnimatedText from "./AnimatedText";
+import AnimatedText from "./AnimatedLogo";
 import { motion, AnimatePresence } from "framer-motion";
 
 const AnimatedBackground = () => {
