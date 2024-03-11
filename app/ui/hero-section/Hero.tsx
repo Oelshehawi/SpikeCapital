@@ -32,7 +32,7 @@ export default function Hero() {
 
   return (
     <motion.div
-      className="mx-4 my-5 flex flex-col items-center justify-center rounded-lg py-10 text-center text-white sm:mx-10 md:mx-0"
+      className="mx-4 my-5 flex flex-col items-center rounded-lg py-10 text-blue sm:mx-10 md:mx-0"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -46,7 +46,7 @@ export default function Hero() {
         {/* Text Content */}
         <h1 className="mb-5 w-full text-3xl font-bold sm:w-3/4 md:text-5xl">
           {
-            "We Install & Operate Outbound Client Acquisition Systems That Guarantee 10-25 Qualified Calls Per Month"
+            "A Modern Approach To Raising Capital."
           }
           <span className="mt-3 block text-xl md:text-2xl">
             {" (or you don't pay)"}
@@ -60,7 +60,7 @@ export default function Hero() {
       </motion.div>
 
 
-      <Button className="px-6 py-3 text-lg font-bold md:mx-5 bg-blue-700 shadow">
+      <Button className="px-6 py-3 text-lg font-bold md:mx-5 shadow">
         Book a Call
       </Button>
     </motion.div>

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Button } from "./buttons";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,7 +44,7 @@ export default function Header() {
   return (
     <div className="flex max-h-10 justify-center p-5">
       <motion.div
-        className={`${isScrolled ? "z-20 rounded-full bg-transparent backdrop-blur-md transition-all" : "backdrop-blur-md"} fixed z-20 flex w-full items-center justify-between rounded p-4 md:w-3/4 `}
+        className={`${isScrolled ? "z-20 rounded-full backdrop-blur-md transition-all" : "backdrop-blur-md"} fixed z-20 flex w-full items-center justify-center rounded p-4 md:w-3/4 `}
         animate={controls}
         initial={{
           y: -20,
@@ -60,7 +59,12 @@ export default function Header() {
             initial="initial"
             animate="animate"
           >
-            LeadSpike
+            <Image 
+            src="/spike-logo.png"
+            alt="Spike Capital Logo"
+            width={80}
+            height={100}
+            />
           </motion.span>
           <motion.div
             className=""
@@ -68,18 +72,8 @@ export default function Header() {
             initial="initial"
             animate="animate"
           >
-            <Image
-              src="/leadspike-arrow.png"
-              alt="Arrow"
-              width={40}
-              height={40}
-              className="object-contain"
-            />
           </motion.div>
         </div>
-        <Button className="animate-bloopMobile justify-end font-bold shadow md:mr-3 md:animate-bloop">
-          Book a Call
-        </Button>
       </motion.div>
     </div>
   );
