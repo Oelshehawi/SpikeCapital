@@ -17,7 +17,7 @@ const AnimatedBackground = () => {
     <motion.div
       initial={{ y: 0 }}
       animate={{ y: "-100%" }}
-      transition={{ duration: 1, ease: "easeInOut", delay: 200 }}
+      transition={{ duration: 1, ease: "easeInOut", delay: 3 }}
       className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center bg-[#333333]"
     >
       <AnimatePresence>{showText && <AnimatedText />}</AnimatePresence>
