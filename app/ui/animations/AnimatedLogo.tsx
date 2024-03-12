@@ -44,6 +44,7 @@ const AnimatedLogo = () => {
 
       exitAnimation();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPresent]);
 
   return (

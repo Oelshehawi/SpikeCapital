@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Button } from "../buttons";
 
 export default function Hero() {
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { delay: 3.2, duration: 0.8 } },
+    visible: { opacity: 1, transition: { delay: 5, duration: 0.8 } },
   };
 
   const textVariants = {
@@ -13,56 +12,39 @@ export default function Hero() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { delay: 3.2, ease: "easeInOut", duration: 0.8 },
-    },
-  };
-
-  const bounceVariants = {
-    hidden: { scale: 0 },
-    visible: {
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: 3.2,
-      },
+      transition: { delay: 5, ease: "easeInOut", duration: 0.8 },
     },
   };
 
   return (
     <motion.div
-      className="mx-4 my-5 flex flex-col items-center rounded-lg py-10 text-blue sm:mx-10 md:mx-0"
+      className="mt-24 flex flex-col items-center rounded-lg py-10 text-center text-blue md:mb-56 md:ml-44 md:mt-44 md:items-start md:text-nowrap md:text-left"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <motion.div
-        className="flex flex-col items-center"
+        className="flex flex-col"
         variants={textVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Text Content */}
-        <h1 className="mb-5 w-full text-3xl font-bold sm:w-3/4 md:text-5xl">
-          {
-            "A Modern Approach To Raising Capital."
-          }
-          <span className="mt-3 block text-xl md:text-2xl">
-            {" (or you don't pay)"}
-          </span>
+        <h1 className="mb-5 text-3xl font-bold sm:w-3/4 md:text-5xl">
+          {"A Modern Approach To Raising Capital."}
         </h1>
-        <p className="text-gray mb-10 font-bold">
-          {
-            "We help B2B businesses scale by providing qualified calls straight to your calendar."
-          }
+        <p className="mb-10 font-bold text-gray">
+          {"Connecting you with private and institutional investors."}
         </p>
       </motion.div>
-
-
-      <Button className="px-6 py-3 text-lg font-bold md:mx-5 shadow">
-        Book a Call
-      </Button>
+      <div className="flex flex-row ">
+        <Button className="px-6 py-3 text-lg font-bold shadow">
+          Book a Call
+        </Button>
+        <Button className="ml-5 bg-white  px-6 py-3 text-lg font-bold shadow">
+          Learn More
+        </Button>
+      </div>
     </motion.div>
   );
 }
