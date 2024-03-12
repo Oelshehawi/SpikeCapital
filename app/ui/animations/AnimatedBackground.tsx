@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import AnimatedText from "./AnimatedLogo";
 import { motion, AnimatePresence } from "framer-motion";
+import AnimatedLogo from "./AnimatedLogo";
 
 const AnimatedBackground = () => {
-  const [showText, setShowText] = useState(true);
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowText(false);
-    }, 2000);
+      setShow(false);
+    }, 4000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -17,10 +17,10 @@ const AnimatedBackground = () => {
     <motion.div
       initial={{ y: 0 }}
       animate={{ y: "-100%" }}
-      transition={{ duration: 1, ease: "easeInOut", delay: 3 }}
+      transition={{ duration: 1, ease: "easeInOut", delay: 4 }}
       className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center bg-[#333333]"
     >
-      <AnimatePresence>{showText && <AnimatedText />}</AnimatePresence>
+      <AnimatePresence>{show ? <AnimatedLogo /> : null}</AnimatePresence>
     </motion.div>
   );
 };

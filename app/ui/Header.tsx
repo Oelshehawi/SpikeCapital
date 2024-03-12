@@ -37,7 +37,7 @@ export default function Header() {
     animate: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: "easeInOut", delay: 3 },
+      transition: { duration: 0.5, ease: "easeInOut", delay: 5 },
     },
   };
 
@@ -59,11 +59,11 @@ export default function Header() {
             initial="initial"
             animate="animate"
           >
-            <Image 
-            src="/spike-logo.png"
-            alt="Spike Capital Logo"
-            width={80}
-            height={100}
+            <Image
+              src="/spike-logo.png"
+              alt="Spike Capital Logo"
+              width={80}
+              height={100}
             />
           </motion.span>
           <motion.div
@@ -71,8 +71,7 @@ export default function Header() {
             variants={logoVariants}
             initial="initial"
             animate="animate"
-          >
-          </motion.div>
+          ></motion.div>
         </div>
       </motion.div>
     </div>
