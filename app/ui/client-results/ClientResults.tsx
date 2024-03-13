@@ -143,7 +143,7 @@ export default function ClientResults() {
   };
 
   return (
-    <div className="flex h-[120vh] flex-col items-center text-center md:h-[80vh] md:flex-row text-black">
+    <div className="flex h-[120vh] flex-col items-center text-center md:h-[80vh] md:flex-row">
       <div className="flex w-2/4 flex-col items-center justify-center">
         <motion.p
           className="mb-4 text-2xl font-bold "
