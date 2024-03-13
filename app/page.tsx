@@ -4,6 +4,7 @@ import Header from "./ui/Header";
 import Hero from "./ui/hero-section/Hero";
 import Trusted from "./ui/trustedBy/Trusted";
 import ClientResults from "./ui/client-results/ClientResults";
+import About from "./ui/about-section/About";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <AnimatedBackground />
       <Header />
       <Hero />
+      <About />
       <Trusted />
       <ClientResults />
     </>

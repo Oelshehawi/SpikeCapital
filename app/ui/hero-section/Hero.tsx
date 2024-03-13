@@ -18,7 +18,7 @@ export default function Hero() {
 
   return (
     <motion.div
-      className="mt-24 flex flex-col items-center rounded-lg py-10 text-center text-blue md:mb-56 md:ml-44 md:mt-44 md:items-start md:text-nowrap md:text-left"
+      className="mt-12 flex flex-col items-center rounded-lg py-10 text-center text-blue md:mb-56 md:ml-44 md:mt-44 md:items-start md:text-nowrap md:text-left"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

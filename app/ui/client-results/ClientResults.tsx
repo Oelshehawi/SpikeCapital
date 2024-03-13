@@ -133,12 +133,12 @@ export default function ClientResults() {
   };
 
   const textEnterFromLeft = {
-    offscreen: { x: -100, opacity: 0 },
+    offscreen: { x: 0, opacity: 0 },
     onscreen: { x: 0, opacity: 1, transition: { duration: 1 } },
   };
 
   const textEnterFromRight = {
-    offscreen: { x: 100, opacity: 0 },
+    offscreen: { x: 0, opacity: 0 },
     onscreen: { x: 0, opacity: 1, transition: { duration: 1 } },
   };
 
