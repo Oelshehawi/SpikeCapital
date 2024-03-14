@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useAnimate, useInView } from "framer-motion";
 import { Button } from "../buttons";
 
 export default function ClientResults() {
   const [isMobile, setIsMobile] = useState(false);
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope);
 
   useEffect(() => {
     const handleResize = () => {
@@ -14,6 +16,28 @@ export default function ClientResults() {
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    const runAnimation = async () => {
+      await animate(
+        scope.current,
+        {
+          y: [300,0],
+          opacity: 1,
+        },
+        {
+          type: "spring",
+          bounce: 0.4,
+          duration: 1.6,
+        }
+      );
+    };
+
+    if (isInView) (
+   
+      runAnimation()
+    )
+  }, [isInView]);
 
   const [cards, setCards] = useState([
     {
@@ -115,15 +139,6 @@ export default function ClientResults() {
       filter: "blur(2px)",
     },
     offscreen: { y: 300, opacity: 0 },
-    onscreen: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        bounce: 0.4,
-        duration: 1.8,
-      },
-    },
   };
 
   const hoverEffect = {
@@ -133,17 +148,17 @@ export default function ClientResults() {
   };
 
   const textEnterFromLeft = {
-    offscreen: { x: 0, opacity: 0 },
-    onscreen: { x: 0, opacity: 1, transition: { duration: 1 } },
+    offscreen: {  opacity: 0 },
+    onscreen: {opacity: 1, transition: { duration: 1 } },
   };
 
   const textEnterFromRight = {
-    offscreen: { x: 0, opacity: 0 },
-    onscreen: { x: 0, opacity: 1, transition: { duration: 1 } },
+    offscreen: {  opacity: 0 },
+    onscreen: { opacity: 1, transition: { duration: 1 } },
   };
 
   return (
-    <div className="flex h-[120vh] flex-col items-center text-center md:h-[80vh] md:flex-row">
+    <div className="flex h-[120vh] flex-col items-center text-center text-black md:h-[80vh] md:flex-row">
       <div className="flex w-2/4 flex-col items-center justify-center">
         <motion.p
           className="mb-4 text-2xl font-bold "
@@ -154,7 +169,7 @@ export default function ClientResults() {
           {"Take a look at some results we've generated for clients."}
         </motion.p>
         <motion.p
-          className="mb-2 text-gray "
+          className="mb-2 text-gray"
           variants={textEnterFromRight}
           initial="offscreen"
           whileInView={"onscreen"}
@@ -175,15 +190,17 @@ export default function ClientResults() {
           Book a Call
         </Button>
       </div>
-      <div className="relative flex h-full w-2/4 flex-col items-center justify-center">
+      <div
+        ref={scope}
+        className="relative flex h-full w-2/4 flex-col items-center justify-center"
+      >
         {cards.map((card) => (
           <motion.div
             key={card.id}
             variants={cardVariants}
             animate={card.shift}
-            initial="offscreen"
-            whileInView="onscreen"
-            className={`absolute z-0 m-5 flex h-[90%] w-full flex-col justify-evenly rounded-lg bg-blue-700 p-5 shadow-cool md:h-[85%] md:w-[60%] md:justify-center ${card.shift != "center" ? "hover:cursor-pointer" : ""}`}
+           
+            className={`absolute z-0 m-5 flex h-[90%] w-full flex-col justify-evenly rounded-lg bg-blue p-5 text-white shadow-cool md:h-[85%] md:w-[60%] md:justify-center ${card.shift != "center" ? "hover:cursor-pointer" : ""}`}
             transition={{ duration: 0.6 }}
             whileHover={card.shift != "center" ? hoverEffect : {}}
             onClick={() => shuffleCards(card.id)}

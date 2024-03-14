@@ -1,10 +1,11 @@
-import { motion, useAnimate, usePresence } from "framer-motion";
+import { motion, useAnimate, usePresence, cubicBezier } from "framer-motion";
 import { useEffect } from "react";
 import Image from "next/image";
 
 const AnimatedLogo = () => {
   const [isPresent, safeToRemove] = usePresence();
   const [scope, animate] = useAnimate();
+  
 
   useEffect(() => {
     if (isPresent) {

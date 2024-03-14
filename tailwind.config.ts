@@ -22,6 +22,7 @@ const config: Config = {
         bloop: "bloop 3s ease-in-out infinite",
         bloopMobile: "bloopMobile 3s ease-in-out infinite",
         slide: "slide 35s linear infinite",
+        pulseShadow: "pulseShadow 2s infinite ease-in-out",
       },
       keyframes: {
         bloop: {
@@ -35,6 +36,14 @@ const config: Config = {
         slide: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
+        },
+        pulseShadow: {
+          "0%, 100%": {
+            boxShadow: "0 0 0 0px rgba(255, 255, 255, 0.7)",
+          },
+          "50%": {
+            boxShadow: "0 0 0 15px rgba(255, 255, 255, 0)",
+          },
         },
       },
       boxShadow: {
