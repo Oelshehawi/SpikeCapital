@@ -1,18 +1,31 @@
-import { Variants, motion, useAnimation, useInView } from "framer-motion";
+import {
+  motion,
+  useAnimate,
+  useAnimation,
+  useInView,
+  animate,
+  AnimationPlaybackControls,
+  useMotionValue,
+} from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Trusted() {
-  const controls = useAnimation();
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true });
+  const [scope, animate] = useAnimate();
+  const controlsRef = useRef<AnimationPlaybackControls | null>(null);
+
+  const inView = useInView(scope);
 
   useEffect(() => {
+    const runAnimation = async () => {
+      await animate(scope.current, { opacity: [0, 1] }, { duration: 1 });
+    };
     if (inView) {
-      controls.start("visible");
+      runAnimation();
     }
-  }, [controls, inView]);
+  }, [inView]);
+
   const logos = [
     {
       src: "/dandelions_digital_logo.png",
@@ -58,31 +71,36 @@ export default function Trusted() {
 
   const TripledLogos = [...logos, ...logos, ...logos];
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, delay: 0.2 },
-    },
-  };
+  const slide = useMotionValue(0);
+
+  useEffect(() => {
+    const totalWidth = logos.length * 150;
+
+    const controls = animate(slide, [-totalWidth, 0], {
+      duration: 30,
+      ease: "linear",
+      repeat: Infinity,
+      repeatType: "loop",
+    });
+
+    controlsRef.current = controls;
+  }, [slide]);
 
   return (
     <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={containerVariants}
+      ref={scope}
       className="my-5 flex flex-col items-center justify-center overflow-hidden bg-white p-5"
     >
-      <h1 className="mb-10 text-3xl font-bold text-white">Trusted By</h1>
+      <h1 className="mb-10 text-3xl font-bold text-black">Trusted By</h1>
       <div className="relative w-full overflow-hidden md:h-56 md:w-3/4">
         <motion.div
           className="flex items-center justify-start gap-x-10 md:gap-x-20"
-          animate={{
-            x: [0, -(logos.length * 500)],
-            transition: { repeat: Infinity, duration: 55, ease: "linear" },
+          style={{
+            x: slide,
           }}
+          initial={{ x: 0 }}
+          onMouseEnter={() => controlsRef.current?.pause()}
+          onMouseLeave={() => controlsRef.current?.play()}
         >
           {TripledLogos.map((logo, index) => (
             <Link key={index} href={logo.href} target="_blank">
