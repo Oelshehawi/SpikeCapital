@@ -7,17 +7,18 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      blue: "#154699",
-      "blue-300": "#6b9ac4",
-      "blue-700": "#153243",
-      "blue-800": "#102d3c",
-      white: "#FFFFFF",
-      black: "#000000",
-      transparent: "rgba(255, 255, 255, 0)",
-      gray: "#808080",
-    },
     extend: {
+      colors: {
+        blue: "#154699",
+        "blue-300": "#6b9ac4",
+        "blue-700": "#153243",
+        "blue-800": "#102d3c",
+        white: "#FFFFFF",
+        darkwhite: "#F4F3F2",
+        black: "#000000",
+        transparent: "rgba(255, 255, 255, 0)",
+        gray: "#808080",
+      },
       animation: {
         bloop: "bloop 3s ease-in-out infinite",
         bloopMobile: "bloopMobile 3s ease-in-out infinite",

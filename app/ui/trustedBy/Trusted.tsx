@@ -24,106 +24,106 @@ export default function Trusted() {
     if (inView) {
       runAnimation();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
-
-  const logos = [
-    {
-      src: "/dandelions_digital_logo.png",
-      alt: "Dandelions Digital",
-      href: "https://dandelionsdigital.com",
-    },
-    {
-      src: "/doukas-logo.png",
-      alt: "Doukas Media",
-      href: "https://www.doukasmedia.com",
-    },
-    {
-      src: "/dre-logo.png",
-      alt: "DRE Courses",
-      href: "https://www.drecourses.com/dib2-optin",
-    },
-    {
-      src: "/passive-logo.png",
-      alt: "Mr. Passive",
-      href: "https://www.mrpassive.com",
-    },
-    {
-      src: "/quant-logo.png",
-      alt: "Quant LLC",
-      href: "https://www.quantllc.net",
-    },
-    {
-      src: "/satori-logo.png",
-      alt: "Jump Satori",
-      href: "https://jumpsatori.com/",
-    },
-    {
-      src: "/black-tie-logo.png",
-      alt: "Black Tie Funding",
-      href: "https://blacktiefunding.com/",
-    },
-    {
-      src: "/optimax-logo.png",
-      alt: "Optimax Talent",
-      href: "https://optimaxtalent.com/",
-    },
-  ];
-
-  const TripledLogos = [...logos, ...logos, ...logos];
-
-  const slide = useMotionValue(0);
-
-  useEffect(() => {
-    const totalWidth = logos.length * 150;
-
-    const controls = animate(slide, [-totalWidth, 0], {
-      duration: 30,
-      ease: "linear",
-      repeat: Infinity,
-      repeatType: "loop",
-    });
-
-    controlsRef.current = controls;
-  }, [slide]);
 
   return (
     <motion.div
       ref={scope}
-      className="my-5 flex flex-col items-center justify-center overflow-hidden bg-white p-5"
+      className=" my-5 flex flex-col items-center justify-center overflow-hidden bg-white p-5 md:h-[40vh]"
     >
       <h1 className="mb-10 text-3xl font-bold text-black">Trusted By</h1>
-      <div className="relative w-full overflow-hidden md:h-56 md:w-3/4">
-        <motion.div
-          className="flex items-center justify-start gap-x-10 md:gap-x-20"
-          style={{
-            x: slide,
-          }}
-          initial={{ x: 0 }}
-          onMouseEnter={() => controlsRef.current?.pause()}
-          onMouseLeave={() => controlsRef.current?.play()}
-        >
-          {TripledLogos.map((logo, index) => (
-            <Link key={index} href={logo.href} target="_blank">
-              <motion.div
-                className="cursor-pointer"
-                whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-              >
-                <div className="relative inline-block h-24 w-24 md:h-48 md:w-48">
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill={true}
-                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 250px"
-                    className="rounded object-contain"
-                  />
-                </div>
-              </motion.div>
-            </Link>
-          ))}
-        </motion.div>
-        <div className="absolute bottom-0 left-0 top-0 w-12 bg-gradient-to-r from-white to-transparent md:w-24"></div>
-        <div className="absolute bottom-0 right-0 top-0 w-12 bg-gradient-to-l from-white to-transparent md:w-2"></div>
+      <div className="flex h-[80%] overflow-hidden">
+        <TranslateWrapper>
+          <LogoItems />
+        </TranslateWrapper>
+        <TranslateWrapper>
+          <LogoItems />
+        </TranslateWrapper>
+        <TranslateWrapper>
+          <LogoItems />
+        </TranslateWrapper>
       </div>
     </motion.div>
   );
 }
+
+const TranslateWrapper: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ translateX: "0%" }}
+      animate={{ translateX: "-100%" }}
+      transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+      className="flex items-center gap-5 md:gap-12 px-3 md:px-6"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const LogoItem: React.FC<{
+  src: string;
+  alt: string;
+  href: string;
+}> = ({ src, alt, href }) => {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+      className=" flex h-24 w-16 items-center justify-center rounded bg-blue p-1 text-black shadow-2xl transition-colors md:h-44 md:w-48 md:p-5 hover:cursor-pointer"
+    >
+      <Link href={href} target="_blank" className="">
+        <Image
+          src={src}
+          alt={alt}
+          width={500}
+          height={500}
+          className="rounded object-contain"
+        />
+      </Link>
+    </motion.div>
+  );
+};
+
+const LogoItems = () => {
+  return (
+    <>
+      <LogoItem
+        src="/dandelions_digital_logo.png"
+        alt="Dandelions Digital"
+        href="https://dandelionsdigital.com"
+      />
+      <LogoItem
+        src="/doukas-logo.png"
+        alt="Doukas Media"
+        href="https://www.doukasmedia.com"
+      />
+      <LogoItem
+        src="/dre-logo.png"
+        alt="DRE Courses"
+        href="https://www.drecourses.com/dib2-optin"
+      />
+      <LogoItem
+        src="/quant-logo.png"
+        alt="Quant LLC"
+        href="https://www.quantllc.net"
+      />
+      <LogoItem
+        src="/satori-logo.png"
+        alt="Jump Satori"
+        href="https://jumpsatori.com/"
+      />
+      <LogoItem
+        src="/black-tie-logo.png"
+        alt="Black Tie Funding"
+        href="https://blacktiefunding.com/"
+      />
+      <LogoItem
+        src="/optimax-logo.png"
+        alt="Optimax Talent"
+        href="https://optimaxtalent.com/"
+      />
+    </>
+  );
+};

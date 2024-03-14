@@ -37,6 +37,7 @@ export default function ClientResults() {
    
       runAnimation()
     )
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 
   const [cards, setCards] = useState([
