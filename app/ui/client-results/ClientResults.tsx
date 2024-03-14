@@ -185,7 +185,6 @@ export default function ClientResults() {
           initial="offscreen"
           whileInView={"onscreen"}
         >
-          {"Our process works for all established B2B businesses."}
         </motion.p>
         <Button className="px-6 py-3 text-lg font-bold md:mx-5">
           Book a Call
