@@ -22,13 +22,13 @@ export default function ClientResults() {
       await animate(
         scope.current,
         {
-          y: [300,0],
+          y: [200,0],
           opacity: 1,
         },
         {
           type: "spring",
           bounce: 0.4,
-          duration: 1.6,
+          duration: 3,
         }
       );
     };
