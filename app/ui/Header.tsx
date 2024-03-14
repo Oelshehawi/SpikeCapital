@@ -44,12 +44,13 @@ export default function Header() {
   return (
     <div className="flex max-h-10 justify-center p-5">
       <motion.div
-        className={`${isScrolled ? "z-20 rounded-full backdrop-blur-md transition-all" : "backdrop-blur-md"} fixed z-20 flex w-full items-center justify-center rounded p-4 md:w-3/4 `}
+        className={`${
+          isScrolled ? "z-20 rounded-full backdrop-blur-md transition-all" : "backdrop-blur-md"
+        } fixed z-20 flex w-full items-center justify-center rounded p-4 md:w-3/4 bg-gradient-to-br from-white/20 to-white/5 border-[1px] border-white/10`}
         animate={controls}
         initial={{
           y: -20,
-          boxShadow:
-            "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
         }}
       >
         <div className="flex items-center">

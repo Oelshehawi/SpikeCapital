@@ -1,5 +1,60 @@
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../buttons";
+
+const STAGGER = 0.025;
+interface AnimatedTextProps {
+  phrases: string[];
+}
+const AnimatedText = ({ phrases }: AnimatedTextProps) => {
+  const countRef = useRef(0);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const intervalRef = setInterval(() => {
+      setActive((prevActive) => (prevActive + 1) % phrases.length);
+    }, 3000);
+
+    return () => clearInterval(intervalRef);
+  }, [phrases.length]);
+
+  return (
+    <AnimatePresence mode="popLayout">
+      {phrases[active].split(" ").map((word: string, wordIndex: number) => {
+        if (wordIndex === 0) {
+          countRef.current = 0;
+        }
+
+        return (
+          <motion.div key={word} className={`whitespace-nowrap ${wordIndex === 1 ? 'ml-3' : ''}`}>
+            {word.split("").map((letter, letterIndex) => {
+              const content = (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  transition={{
+                    delay: countRef.current * STAGGER,
+                    type: "spring",
+                    damping: 12,
+                    stiffness: 200,
+                  }}
+                  className="inline-block"
+                  key={letterIndex}
+                >
+                  {letter}
+                </motion.span>
+              );
+
+              countRef.current++;
+              return content;
+            })}
+          </motion.div>
+        );
+      })}
+    </AnimatePresence>
+  );
+};
 
 export default function Hero() {
   const containerVariants = {
@@ -29,12 +84,22 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        {/* Text Content */}
-        <h1 className="mb-5 text-3xl font-bold sm:w-3/4 md:text-5xl">
-          {"A Modern Approach To Raising Capital."}
+        <h1 className=" mb-5 flex flex-col text-3xl font-bold sm:w-3/4 md:flex-row md:text-5xl">
+          A Modern Approach To{" "}
+          <div className="flex flex-row justify-center md:ml-3 ">
+            <AnimatedText
+              phrases={[
+                "Raising Capital",
+                "Securing Investments",
+                "Growth Financing",
+                "Strategic Acquisitions",
+                "Capital Infusion",
+              ]}
+            />
+          </div>
         </h1>
         <p className="mb-10 font-bold text-gray">
-          {"Connecting you with private and institutional investors."}
+          Connecting you with private and institutional investors.
         </p>
       </motion.div>
       <div className="flex flex-row ">
