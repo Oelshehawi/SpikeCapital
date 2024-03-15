@@ -14,12 +14,14 @@ export default function Home() {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
         document.title = "Spike Capital"; 
+        
+      }else{
         document.title = 'Come Back!'; 
       }
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    
+
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
