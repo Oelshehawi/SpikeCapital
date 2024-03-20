@@ -2,7 +2,7 @@ import { InfoBox } from "./InfoBox";
 
 export default function About() {
   return (
-    <div className="flex flex-col justify-center h-[80vh] bg-blue overflow-hidden w-full">
+    <div id='about' className="flex flex-col justify-center h-[80vh] bg-primary overflow-hidden w-full">
       <h1 className="flex justify-center pb-10  text-4xl font-semibold md:ml-36 md:justify-start md:pb-5 md:text-5xl mt-5 md:mt-0">
         {"Spike's Story"}
       </h1>

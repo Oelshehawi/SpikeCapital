@@ -1,6 +1,6 @@
 import { useScroll, motion, useTransform } from "framer-motion";
 import React, { useRef } from "react";
-import { ArrowRightCircleIcon, CurrencyDollarIcon, UserGroupIcon, ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
+import { CurrencyDollarIcon, UserGroupIcon, ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
 import { ClipboardDocumentCheckIcon } from "@heroicons/react/24/solid";
 
 interface CardData {
@@ -53,7 +53,7 @@ const Card: React.FC<CardProps> = ({ position, card, scrollYProgress }) => {
       style={{
         height: CARD_HEIGHT,
         y: position === CARDS.length ? undefined : y,
-        background: isOddCard ? "#F4F3F2" : "black",
+        background: isOddCard ? "#F4F3F2" : "#0766ff",
         color: isOddCard ? "black" : "white",
       }}
       className="sticky top-0 flex w-full origin-top flex-col items-center justify-center px-4"
@@ -64,21 +64,7 @@ const Card: React.FC<CardProps> = ({ position, card, scrollYProgress }) => {
       </h3>
       <p className="mb-8 max-w-lg text-center text-sm md:text-base">
         {card.description}
-      </p>
-      <a
-        href={card.routeTo}
-        target="_blank"
-        className={`flex items-center gap-2 rounded px-6 py-4 text-base font-medium uppercase text-black transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 md:text-lg ${
-          card.ctaClasses
-        } ${
-          isOddCard
-            ? "shadow-[4px_4px_0px_white] hover:shadow-[8px_8px_0px_white]"
-            : "shadow-[4px_4px_0px_black] hover:shadow-[8px_8px_0px_black]"
-        }`}
-      >
-        <span>Learn more</span>
-        <ArrowRightCircleIcon className="h-5 w-5" />
-      </a>
+      </p>  
     </motion.div>
   );
 };

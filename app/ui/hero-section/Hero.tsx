@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../buttons";
+import Link from "next/link";
+import Image from "next/image";
 
 const STAGGER = 0.025;
 interface AnimatedTextProps {
@@ -26,7 +28,10 @@ const AnimatedText = ({ phrases }: AnimatedTextProps) => {
         }
 
         return (
-          <motion.div key={word} className={`whitespace-nowrap ${wordIndex === 1 ? 'ml-3' : ''}`}>
+          <motion.div
+            key={word}
+            className={`whitespace-nowrap ${wordIndex === 1 ? "ml-3" : ""}`}
+          >
             {word.split("").map((letter, letterIndex) => {
               const content = (
                 <motion.span
@@ -72,44 +77,51 @@ export default function Hero() {
   };
 
   return (
-    <motion.div
-      className="mt-12 flex flex-col items-center rounded-lg py-10 text-center text-blue md:mb-56 md:ml-44 md:mt-44 md:items-start md:text-nowrap md:text-left"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
+    <div className=" flex flex-row">
       <motion.div
-        className="flex flex-col"
-        variants={textVariants}
+        className="mt-12 flex flex-col items-center rounded-lg py-10 text-center text-black md:mb-56 md:ml-24 md:mt-44 md:items-start md:text-nowrap md:text-left"
+        variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <h1 className=" mb-5 flex flex-col text-3xl font-bold sm:w-3/4 md:flex-row md:text-5xl">
-          A Modern Approach To{" "}
-          <div className="flex flex-row justify-center md:ml-3 ">
-            <AnimatedText
-              phrases={[
-                "Raising Capital",
-                "Securing Investments",
-                "Growth Financing",
-                "Strategic Acquisitions",
-                "Capital Infusion",
-              ]}
-            />
-          </div>
-        </h1>
-        <p className="mb-10 font-bold text-gray">
-          Connecting you with private and institutional investors.
-        </p>
+        <motion.div
+          className="flex flex-col"
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <h1 className=" mb-5 flex flex-col text-3xl sm:w-3/4 md:flex-row md:text-5xl">
+            A Modern Approach To{" "}
+            <div className="flex flex-row justify-center md:ml-3 ">
+              <AnimatedText
+                phrases={[
+                  "Raising Capital",
+                  "Securing Investments",
+                  "Growth Financing",
+                  "LP Partnerships",
+                  "Capital Infusion",
+                ]}
+              />
+            </div>
+          </h1>
+          <p className="mb-10 text-gray">
+            Connecting you with accredited private and institutional investors.
+          </p>
+        </motion.div>
+        <div className="flex flex-row scroll-smooth">
+          <Link
+            href="https://calendly.com/spikelead/capital-raise-demo-call"
+            target="_blank"
+          >
+            <Button className="px-6 py-3 text-lg shadow">Book a Call</Button>
+          </Link>
+          <Link href="#about" className="scroll-smooth">
+            <Button className="ml-5 bg-white px-6 py-3 text-lg shadow">
+              Learn More
+            </Button>
+          </Link>
+        </div>
       </motion.div>
-      <div className="flex flex-row ">
-        <Button className="px-6 py-3 text-lg font-bold shadow">
-          Book a Call
-        </Button>
-        <Button className="ml-5 bg-white  px-6 py-3 text-lg font-bold shadow">
-          Learn More
-        </Button>
-      </div>
-    </motion.div>
+    </div>
   );
 }

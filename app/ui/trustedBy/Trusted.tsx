@@ -30,9 +30,9 @@ export default function Trusted() {
   return (
     <motion.div
       ref={scope}
-      className=" my-5 flex flex-col items-center justify-center overflow-hidden bg-white p-5 md:h-[40vh]"
+      className=" my-5 flex h-[40vh] flex-col items-center justify-center overflow-hidden bg-darkwhite p-5 md:h-[40vh]"
     >
-      <h1 className="mb-10 text-3xl font-bold text-black">Trusted By</h1>
+      <h1 className=" text-3xl font-bold text-black">Trusted By</h1>
       <div className="flex h-[80%] overflow-hidden">
         <TranslateWrapper>
           <LogoItems />
@@ -56,7 +56,7 @@ const TranslateWrapper: React.FC<{
       initial={{ translateX: "0%" }}
       animate={{ translateX: "-100%" }}
       transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-      className="flex items-center gap-5 md:gap-12 px-3 md:px-6"
+      className="flex items-center gap-5 md:gap-12 px-3 md:px-6 mb-5"
     >
       {children}
     </motion.div>
@@ -71,7 +71,7 @@ const LogoItem: React.FC<{
   return (
     <motion.div
       whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-      className=" flex h-24 w-16 items-center justify-center rounded bg-blue p-1 text-black shadow-2xl transition-colors md:h-44 md:w-48 md:p-5 hover:cursor-pointer"
+      className="flex h-28 w-24 items-center justify-center rounded p-1 text-black shadow-2xl transition-colors md:h-44 md:w-48 md:p-5 hover:cursor-pointer"
     >
       <Link href={href} target="_blank" className="">
         <Image

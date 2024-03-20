@@ -28,7 +28,7 @@ const Contact = () => {
     <div className="flex h-[80vh] items-center justify-center text-center">
     <motion.div
       ref={scope}
-      className="flex h-3/4 w-3/4 flex-col items-center justify-center rounded-md bg-blue shadow-2xl px-2"
+      className="flex h-3/4 w-3/4 flex-col items-center justify-center rounded-md bg-primary shadow-2xl px-2"
     >
       <h1 className="flex justify-center text-5xl"> Get in Touch </h1>
       <div className="flex items-center justify-center pt-10">

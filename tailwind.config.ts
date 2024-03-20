@@ -18,6 +18,31 @@ const config: Config = {
         black: "#000000",
         transparent: "rgba(255, 255, 255, 0)",
         gray: "#808080",
+        primary: "#0766ff",
+                "primary-content": "#ffffff",
+                "primary-dark": "#0051d3",
+                "primary-light": "#3a85ff",
+
+                secondary: "#ff073d",
+                "secondary-content": "#ffffff",
+                "secondary-dark": "#d3002e",
+                "secondary-light": "#ff3a65",
+
+                background: "#eeeff2",
+                foreground: "#fbfbfc",
+                border: "#dbdee3",
+
+                copy: "#21252b",
+                "copy-light": "#596373",
+                "copy-lighter": "#7e899b",
+
+                success: "#07ff07",
+                warning: "#ffff07",
+                error: "#ff0707",
+
+                "success-content": "#000700",
+                "warning-content": "#070700",
+                "error-content": "#ffffff"
       },
       animation: {
         bloop: "bloop 3s ease-in-out infinite",
