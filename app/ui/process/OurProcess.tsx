@@ -53,7 +53,7 @@ const Card: React.FC<CardProps> = ({ position, card, scrollYProgress }) => {
       style={{
         height: CARD_HEIGHT,
         y: position === CARDS.length ? undefined : y,
-        background: isOddCard ? "#F4F3F2" : "#0766ff",
+        background: isOddCard ? "#F4F3F2" : "#21252b",
         color: isOddCard ? "black" : "white",
       }}
       className="sticky top-0 flex w-full origin-top flex-col items-center justify-center px-4"
