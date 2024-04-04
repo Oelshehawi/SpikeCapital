@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../buttons";
 import Link from "next/link";
-import Image from "next/image";
 import { LearnButton } from "../buttons";
 import * as THREE from "three";
 
@@ -32,7 +31,7 @@ const AnimatedText = ({ phrases }: AnimatedTextProps) => {
         return (
           <motion.div
             key={word}
-            className={`whitespace-nowrap ${wordIndex === 1 ? "ml-3" : ""}`}
+            className={`whitespace-nowrap md:text-3xl xl:text-5xl ${wordIndex === 1 ? "ml-3" : ""}`}
           >
             {word.split("").map((letter, letterIndex) => {
               const content = (
@@ -65,28 +64,35 @@ const AnimatedText = ({ phrases }: AnimatedTextProps) => {
 
 export default function Hero() {
   const globeRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
+  const [cameraFOV, setCameraFOV] = useState(60);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+    const updateStatesBasedOnWidth = () => {
+      const currentWidth = window.innerWidth;
+      setIsMobile(currentWidth < 768);
+      if (currentWidth <= 1024) {
+        setCameraFOV(40); // FOV for width <= 1024px
+      } else if (currentWidth > 1024 && currentWidth <= 1440) {
+        setCameraFOV(60); // FOV for 1024px < width <= 1440px
+      } else {
+        setCameraFOV(50); // FOV for width > 1440px
+      }
     };
 
-    handleResize();
+    updateStatesBasedOnWidth();
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", updateStatesBasedOnWidth);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", updateStatesBasedOnWidth);
   }, []);
 
   useEffect(() => {
     if (!isMobile && globeRef.current) {
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
+        cameraFOV,
+        globeRef.current.clientWidth / globeRef.current.clientHeight,
         0.1,
         1000,
       );
@@ -94,7 +100,10 @@ export default function Hero() {
         antialias: true,
         alpha: true,
       });
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(
+        globeRef.current.clientWidth,
+        globeRef.current.clientHeight,
+      );
       globeRef.current.appendChild(renderer.domElement);
 
       const globeGeometry = new THREE.SphereGeometry(5, 60, 60);
@@ -124,7 +133,7 @@ export default function Hero() {
         lineMaterial.dispose();
       };
     }
-  }, [isMobile]);
+  }, [isMobile, cameraFOV]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -140,15 +149,11 @@ export default function Hero() {
     },
   };
 
-  const globeVariants = {
-    animate: { rotate: 360 },
-  };
-
   return (
-    <div className="relative flex flex-row">
+    <div className="flex h-[50vh] items-center justify-evenly md:mb-56 md:h-[50vh] md:flex-col xl:mb-0 xl:h-[70vh] xl:flex-row xl:px-20">
       <div className="z-10">
         <motion.div
-          className="mt-12 flex flex-col items-center rounded-lg py-10 text-center text-black md:mb-56 md:ml-36 md:mt-44 md:items-start md:text-nowrap md:text-left"
+          className=" flex flex-col items-center rounded-xl text-center text-black md:w-[100vw] xl:items-start md:text-nowrap md:px-20 xl:text-left xl:w-[60vw] xl:px-0"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -159,7 +164,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <h1 className=" mb-5 flex flex-col text-3xl sm:w-3/4 md:flex-row md:text-5xl">
+            <h1 className=" mb-5 flex flex-col text-2xl md:flex-row md:text-3xl xl:text-5xl">
               A Modern Approach To{" "}
               <div className="flex flex-row justify-center md:ml-3 ">
                 <AnimatedText
@@ -173,20 +178,22 @@ export default function Hero() {
                 />
               </div>
             </h1>
-            <p className="mb-10 text-gray">
+            <p className="mb-10 px-10 text-gray md:px-0">
               Connecting you with accredited private and institutional
               investors.
             </p>
           </motion.div>
-          <div className="flex flex-row scroll-smooth">
+          <div className="flex flex-row scroll-smooth px-2 text-sm md:px-0 xl:px-0">
             <Link
               href="https://calendly.com/spikelead/capital-raise-demo-call"
               target="_blank"
             >
-              <Button className="px-6 py-3 text-lg shadow">Book a Call</Button>
+              <Button className="px-6 py-3 shadow xl:text-xl">
+                Book a Call
+              </Button>
             </Link>
             <Link href="#about">
-              <LearnButton className="ml-2 px-6 py-3 text-lg shadow">
+              <LearnButton className="ml-2 px-6 py-3 shadow xl:text-xl">
                 Learn More
               </LearnButton>
             </Link>
@@ -194,10 +201,10 @@ export default function Hero() {
         </motion.div>
       </div>
       {!isMobile && (
-        <div
+        <motion.div
           ref={globeRef}
-          className="absolute ml-20 z-0 md:left-96 md:right-0 md:top-24 md:max-h-[500px] md:max-w-[700px] md:-translate-y-1/2"
-        />
+          className="z-0 h-full w-full overflow-visible md:absolute md:top-96 xl:relative xl:bottom-auto xl:top-0"
+        ></motion.div>
       )}
     </div>
   );

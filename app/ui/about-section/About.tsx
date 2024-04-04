@@ -6,14 +6,22 @@ const AccordionSolutions = () => {
   const [open, setOpen] = useState(solutions[0].id);
   const imgSrc = solutions.find((s) => s.id === open)?.imgSrc;
   return (
-    <section id='about' className="px-8 md:px-0 py-12 bg-primary">
-      <div className="w-full max-w-7xl md:ml-36 grid gap-8 grid-cols-1 lg:grid-cols-[1fr_350px]">
-        <div>
-          <h3 className="text-4xl font-bold mb-8 text-white">{"Spike's Story"}</h3>
+    <section id="about" className="z-10 bg-primary px-8 py-12 md:px-0">
+      <div className="max-w-9xl z-10 grid w-full grid-cols-1 gap-8 md:px-20 lg:grid-cols-[1fr_350px]">
+        <div className="z-10">
+          <h3 className="mb-8 text-4xl font-bold text-white">
+            {"Spike's Story"}
+          </h3>
           <div className="flex flex-col gap-4">
             {solutions.map((q) => {
               return (
-                <Solution {...q} key={q.id} open={open} setOpen={setOpen} index={q.id} />
+                <Solution
+                  {...q}
+                  key={q.id}
+                  open={open}
+                  setOpen={setOpen}
+                  index={q.id}
+                />
               );
             })}
           </div>
@@ -24,7 +32,7 @@ const AccordionSolutions = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             key={imgSrc}
-            className="bg-slate-300 rounded-2xl aspect-[4/3] lg:aspect-auto"
+            className="z-10 aspect-[4/3] rounded-2xl bg-slate-300 lg:aspect-auto"
             style={{
               backgroundImage: `url(${imgSrc})`,
               backgroundPosition: "center",
@@ -37,20 +45,20 @@ const AccordionSolutions = () => {
   );
 };
 
-const Solution = ({ title, description, index, open, setOpen } : any) => {
+const Solution = ({ title, description, index, open, setOpen }: any) => {
   const isOpen = index === open;
 
   return (
     <div
       onClick={() => setOpen(index)}
-      className="p-0.5 rounded-lg relative overflow-hidden cursor-pointer"
+      className="relative cursor-pointer overflow-hidden rounded-lg p-0.5"
     >
       <motion.div
         initial={false}
         animate={{
           height: isOpen ? "240px" : "72px",
         }}
-        className="p-6 rounded-[7px] bg-white flex flex-col justify-between relative z-20"
+        className="relative z-20 flex flex-col justify-between rounded-[7px] bg-white p-6"
       >
         <div>
           <motion.p
@@ -58,7 +66,7 @@ const Solution = ({ title, description, index, open, setOpen } : any) => {
             animate={{
               color: isOpen ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 1)",
             }}
-            className="text-xl font-medium w-fit bg-gradient-to-r from-secondary-dark to-secondary-light bg-clip-text text-nowrap"
+            className="w-fit text-nowrap bg-gradient-to-r from-secondary-dark to-secondary-light bg-clip-text text-xl font-medium"
           >
             {title}
           </motion.p>
@@ -77,9 +85,8 @@ const Solution = ({ title, description, index, open, setOpen } : any) => {
           animate={{
             opacity: isOpen ? 1 : 0,
           }}
-          className="-ml-6 -mr-6 -mb-6 mt-4 py-2 rounded-b-md flex items-center justify-center gap-1 group transition-[gap] bg-gradient-to-r from-secondary-dark to-secondary-light text-white"
-        >
-        </motion.button>
+          className="group -mb-6 -ml-6 -mr-6 mt-4 flex items-center justify-center gap-1 rounded-b-md bg-gradient-to-r from-secondary-dark to-secondary-light py-2 text-white transition-[gap]"
+        ></motion.button>
       </motion.div>
       <motion.div
         initial={false}
