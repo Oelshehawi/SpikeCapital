@@ -31,7 +31,7 @@ const AnimatedText = ({ phrases }: AnimatedTextProps) => {
         return (
           <motion.div
             key={word}
-            className={`whitespace-nowrap md:text-3xl xl:text-5xl ${wordIndex === 1 ? "ml-3" : ""}`}
+            className={`whitespace-nowrap md:text-3xl xl:text-4xl ${wordIndex === 1 ? "ml-3" : ""}`}
           >
             {word.split("").map((letter, letterIndex) => {
               const content = (
@@ -164,7 +164,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <h1 className=" mb-5 flex flex-col text-2xl md:flex-row md:text-3xl xl:text-5xl">
+            <h1 className=" mb-5 flex flex-col text-2xl md:flex-row md:text-3xl xl:text-4xl">
               A Modern Approach To{" "}
               <div className="flex flex-row justify-center md:ml-3 ">
                 <AnimatedText
