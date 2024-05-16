@@ -8,10 +8,6 @@ Welcome to the official repository for **LeadSpike**, your premier lead generati
 
 ## Features
 
-- **Lead Capture Forms**: Optimized forms to maximize conversion rates and collect essential information.
-
 - **Testimonials and Success Stories**: Real-life case studies showcasing the impact of our services on business growth.
-
-- **Analytics**: Insightful analytics to track visitor behavior and lead conversion rates.
 
 - **Responsive Design**: Ensures a seamless experience across all devices, from desktops to mobile phones.
